@@ -1,0 +1,9 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+
+build
+.expo
+package.lock.json
+yarn.lock
+yarn.error.log
