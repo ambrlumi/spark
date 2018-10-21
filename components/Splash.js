@@ -17,6 +17,11 @@ export default class Splash extends React.Component {
             source={require("../assets/logo_white.png")}
             style={styles.splash_icon}
           />
+
+          <Image
+            source={require("../assets/rotate.gif")}
+            style={styles.rotate_icon}
+          />
         </View>
       </Camera>
     );

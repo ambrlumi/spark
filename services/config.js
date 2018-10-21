@@ -1,3 +1,3 @@
-const config = { BLAZE_URL: "http://d9e6f2d1.ngrok.io/api" };
+const config = { BLAZE_URL: "http://84157a38.ngrok.io/api" };
 
 export default config;

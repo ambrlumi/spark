@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { Camera, Location, Permissions } from "expo";
 
 import styles from "../styles";
@@ -11,7 +10,7 @@ export default class Dash extends React.Component {
     await this.takePicture();
     // this.interval = setInterval(async () => {
     //   this.takePicture();
-    // }, 5000);
+    // }, 10000);
   };
 
   componentWillUnmount = () => clearInterval(this.interval);
@@ -21,12 +20,12 @@ export default class Dash extends React.Component {
 
   takePicture = async () => {
     try {
-      if (this.camera) {
-        const data = await this.camera.takePictureAsync({ base64: true });
-        const base64 = `data:image/jpg;base64,${data.base64}`;
-        // this.check(base64);
-      }
+      console.log("Taking pic");
+      const data = await this.camera.takePictureAsync({ base64: true });
+      const base64 = `data:image/jpg;base64,${data.base64}`;
+      this.check(base64);
     } catch (e) {
+      this.takePicture();
       console.log(e);
     }
   };
@@ -47,7 +46,6 @@ export default class Dash extends React.Component {
   check = async base64 => {
     try {
       const blz = await blaze.check(base64);
-
       if (blz) {
         const loc = await this.getCoordinates();
         const { latitude, longitude } = loc.location.coords;
@@ -58,7 +56,7 @@ export default class Dash extends React.Component {
           lng: longitude
         };
 
-        await blaze.create(payload);
+        blaze.create(payload);
         this.takePicture();
       } else {
         console.log("No case to open");

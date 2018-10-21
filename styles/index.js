@@ -38,6 +38,12 @@ export default StyleSheet.create({
     alignItems: "center"
   },
 
+  rotate_icon: {
+    marginTop: 60,
+    width: 200,
+    height: 150
+  },
+
   /* ----------------------------- */
 
   splash_icon: {
